@@ -21,7 +21,7 @@ def generate_weekdays(year, month):
 def save_to_excel(dates, names, filename):
     # 将日期格式转换为 'YYYY-MM-DD'
     dates_formatted = [date.strftime('%Y-%m-%d') for date in dates]
-    df = pd.DataFrame({'日期 Date': dates_formatted, '姓名 Name': names, '组别 Team': ['']*len(dates), '岗外作业类型 Type of loss time': ['']*len(dates)})
+    df = pd.DataFrame({'日期 Date': dates_formatted, '姓名 Name': names, '组别 Team': ['']*len(dates), '岗外作业类型 Type of loss time': ['']*len(dates),'累计工时 Total hours': ['']*len(dates),'组别leader签字': ['']*len(dates),'PE签字': ['']*len(dates),'备注': ['']*len(dates),})
     df.to_excel(filename, index=False)
     
     # 调整列宽并设置日期格式
@@ -63,4 +63,4 @@ if __name__ == "__main__":
     names = [name] * len(weekdays)
     
     # 保存到Excel文件
-    save_to_excel(weekdays, names, '异常工时.xlsx')
+    save_to_excel(weekdays, names, name+'的异常工时.xlsx')
